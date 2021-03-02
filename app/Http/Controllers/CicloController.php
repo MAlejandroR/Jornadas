@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Ciclo;
 use Illuminate\Http\Request;
+use phpDocumentor\Reflection\DocBlock\Tags\Var_;
 
 class CicloController extends Controller
 {
@@ -16,12 +17,30 @@ class CicloController extends Controller
 
     public function get(Request $request)
     {
-//        abort_unless(\Gate::allows('city_access'), 401);
 
-            $ciclos = Ciclo::All()->where("familia", $request->familia);
-            $html = "";
-            foreach ($ciclos as $ciclo)
-                $html .= '<option value="' . $ciclo->nombre . '"</option>\n';
+        $familias = $request->familia;
+
+
+        $familias = explode(",", $familias);
+        info("Valor leído ", $familias);
+        $ciclos = "";
+////
+//
+        $html = "";
+
+        foreach ($familias as $familia) {
+            $ciclos = Ciclo::where("familia", $familia)->get();
+            foreach ($ciclos as $ciclo) {
+                $ck = "";
+                if (in_array($ciclo->nombre, $familias))
+                    $ck = "checked";
+                $html .= "<label for='' class='inline-flex items-center'>
+                          <input $ck type='checkbox' class='form-checkbox text-indigo-600' value='$ciclo->nombre' />
+                          <span class='ml-2' >$ciclo->nombre</span>
+                          </label><br />";
+            }
+        }
+
 
         return response()->json(['html' => $html]);
 

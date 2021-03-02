@@ -15,5 +15,13 @@ class Ajax extends Controller
         return view("ajax", ["ciclos"=>$ciclos]);
 
     }
+
+    public function ciclos(){
+
+        $ciclos = Ciclo::All();
+        return view("instituto.empresas.ciclos", compact('ciclos'));
+    }
+
+
     //
 }

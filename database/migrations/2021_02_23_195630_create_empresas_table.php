@@ -21,8 +21,6 @@ class CreateEmpresasTable extends Migration
             $table->string("ponente");
             $table->string("horario");
             $table->string("duracion");
-            $table->string("familia");
-            $table->string("ciclo");
             $table->string("enlace");
             $table->string("logo");
         });

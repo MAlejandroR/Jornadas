@@ -44,6 +44,8 @@ class EmpresaController extends Controller
     public function store(Request $request)
     {
         $empresa = new Empresa($request->input());
+//        dd($empresa);
+        $empresa_ciclos = new EmpresaCiclos($request->input());
 
         $name= $request->file('logo')->getClientOriginalName();;
 
