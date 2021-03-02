@@ -56,4 +56,6 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
    *(OK)*Volver a hacer migraciones 
     Mirar el tema de integridad referencial
     Guardar correctamente los datos
+4.1. Quiero instalar un plugin para los formularios de tailwindcss
+   https://laravel-news.com/tailwindcss-custom-forms
 5.- hacer un grud de empresas para su gestión    

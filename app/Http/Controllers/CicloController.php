@@ -49,6 +49,8 @@ class CicloController extends Controller
 
     public function index()
     {
+        $ciclos = Ciclo::select("familia")->get();
+        return view("instituto.empresas.ciclos", compact("ciclos"));
         //
     }
 

@@ -1,6 +1,7 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
+
     purge: ['./storage/framework/views/*.php', './resources/views/**/*.blade.php'],
 
     theme: {
@@ -20,7 +21,7 @@ module.exports = {
                 'smoke-lightest': 'rgba(0, 0, 0, 0.1)',
                 'enlaces': '#E9571E',
             },
-            backgroundColor:{
+            backgroundColor: {
                 'cabecera': "#333333",
             },
 
