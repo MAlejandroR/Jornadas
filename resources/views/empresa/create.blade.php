@@ -68,25 +68,27 @@ El Centro Público Integrado de Formación Profesional Los Enlaces comenzó a fu
                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     name="duracion" id="date" type="number" placeholder="Duración en minutos" required>
         </div>
-        <label class="block text-gray-700 text-sm font-bold mb-2" for="familia">
-            Familia profesional a la que va dirigido
-        </label>
+        <div class="flex flex-col justify-center border-purple-900  w-1/4 p-6
+                    border-pink-700 rounded-3xl">
+            <label class="border-pink-900 rounded-4 text-3xl" for="familia">Familias profesionales
+                @php
+                    $colores=['red', 'green','blue'];
+                    $n=0;
+                @endphp
 
-        {{--        <select  id='familia' name='familia[]' multiple class="w-full border bg-white rounded px-3 py-2 outline-none ">--}}
-        {{--            <option class="py-1 2xl:focus-within:text-gray-100">Selecciona una familia</option>--}}
-        {{--            @foreach($ciclos as $ciclo)--}}
-        {{--                <option class="py-1">{{$ciclo->familia}}</option>--}}
-        {{--            @endforeach--}}
-        {{--        </select>--}}
-
-        @foreach($ciclos as $ciclo)
-            <input type="checkbox" class="form-checkbox text-indigo-600" id="familia" name="familia[]" value="{{$ciclo->familia}}"
-                   class="py-1">{{$ciclo->familia}} <br/>
-        @endforeach
+                @foreach($ciclos as $index=> $ciclo)
+                    <div class="flex flex-row text-2xl">
+                        <input type="checkbox" id="familia" name="familia[]" value="{{$ciclo->familia}}" class="py-1" color={{$index}}>
+                        <span  class="ml-3 text-{{$colores[$index]}}-800" >{{$ciclo->familia}}</span>
+                    </div>
+                @endforeach
+            </label>
+        </div>
 
         <label class="block text-gray-700 text-sm font-bold mb-2" for="ciclo">
             Ciclo al que va dirigido
         </label>
+
         <div id='ciclo'>
             {{--            Falta implementar esta parte--}}
             <h2>Para mostrar ciclos, selecciona una familia</h2>
@@ -117,7 +119,7 @@ El Centro Público Integrado de Formación Profesional Los Enlaces comenzó a fu
         $("#form input[type=checkbox]").click(function () {
             var ciclos = [];
             $("input:checkbox:checked").each(function () {
-                ciclos.push($(this).val());
+                ciclos.push($(this).val()+"-"+$(this).attr('color'));
             });
             $.ajax({
                 url: "{{ route('ciclos.get_by_family')}}?familia=" + ciclos,

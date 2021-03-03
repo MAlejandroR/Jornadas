@@ -36,8 +36,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::view("m", "home1");
 
 Route::resource("empresas",App\Http\Controllers\EmpresaController::class);
-Route::post("obtener_ciclos",("App\Http\Controllers\CicloController@get"))->name("ciclos.get_by_family");
-Route::get("obtener_ciclos",("App\Http\Controllers\CicloController@index"))->name("ciclos.get_by_family");
+Route::get("obtener_ciclos",("App\Http\Controllers\CicloController@get"))->name("ciclos.get_by_family");
+Route::post("obtener_ciclos",("App\Http\Controllers\CicloController@index"))->name("ciclos.get_by_family");
 Route::get("ajax",'App\Http\Controllers\Ajax@index');
 Route::get("prueba",'App\Http\Controllers\Ajax@ciclos');
 

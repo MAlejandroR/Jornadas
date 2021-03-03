@@ -30,6 +30,7 @@ class EmpresasCiclos extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('ciclos');
         //
     }
 }

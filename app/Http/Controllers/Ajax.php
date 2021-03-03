@@ -18,7 +18,7 @@ class Ajax extends Controller
 
     public function ciclos(){
 
-        $ciclos = Ciclo::All();
+        $ciclos = Ciclo::select('familia')->distinct()->get();
         return view("instituto.empresas.ciclos", compact('ciclos'));
     }
 

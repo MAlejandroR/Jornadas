@@ -9,7 +9,25 @@
 @section("contenido")
     create.blade.php
     <form action={{route('ciclos.get_by_family')}} enctype="multipart/form-data" method='POST' id="form">
-          @csrf
+        @csrf
+
+        <div class="flex flex-col justify-center bg-yellow-200  w-1/4 p-6
+                    border-pink-700 rounded-3xl">
+            <label class="text-yellow-600" for="familia">Familias profesionales
+                @php
+                    $n=1;
+                @endphp
+                @foreach($ciclos as $ciclo)
+
+                    <div class="flex flex-row">
+                        <input type="checkbox" id="familia" name="familia[]" value="{{$ciclo->nombre}}" class="py-1">
+                        <span class="ml-3 text-green-{{$n++*200+200}}">{{$ciclo->familia}}</span>
+                    </div>
+                @endforeach
+            </label>
+        </div>
+
+
         <label class="block text-gray-700 text-sm font-bold mb-2" for="ciclo">
             Familia profesional a la que va dirigido
         </label>
@@ -19,11 +37,13 @@
         {{--                <option class="py-1">{{$ciclo->familia}}</option>--}}
         {{--            @endforeach--}}
         {{--        </select>--}}
-
-        @foreach($ciclos as $ciclo)
-            <input type="checkbox" id="familia" name="familia[]" value="{{$ciclo->familia}}" class="py-1">{{$ciclo->familia}} <br/>
-        @endforeach
-
+        <fieldset class="">
+            <legend class="">Familias profesionales</legend>
+            @foreach($ciclos as $ciclo)
+                <input type="checkbox" id="familia" name="familia[]" value="{{$ciclo->familia}}"
+                       class="py-1">{{$ciclo->familia}} <br/>
+            @endforeach
+        </fieldset>
         <label class="block text-gray-700 text-sm font-bold mb-2" for="ciclo">
             Ciclo al que va dirigido
         </label>
@@ -31,7 +51,7 @@
             {{--            Falta implementar esta parte--}}
             <h2>Para mostrar ciclos, selecciona una familia</h2>
         </div>
-    <input type="submit" value="Enviar">
+        <input type="submit" value="Enviar">
     </form>
 
 
@@ -40,11 +60,11 @@
     <script type="text/javascript">
         $("#form input[type=checkbox]").click(function () {
             var ciclos = [];
-            $("input:checkbox:checked").each(function() {
-                ciclos.push($(this).val());
+            $("input:checkbox:checked").each(function () {
+                ciclos.push($(this).val()+"-"+$(this).className());
             });
             $.ajax({
-                url: "{{ route('ciclos.get_by_family')}}?familia="+ciclos,
+                url: "{{ route('ciclos.get_by_family')}}?familia=" + ciclos,
                 method: 'GET',
                 success: function (data) {
                     $('#ciclo').html(data.html);

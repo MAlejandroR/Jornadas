@@ -1,4 +1,4 @@
-@extends('instituto.layout')
+@extends('layout')
 
 @section('contenido')
     <div class="grid grid-cols-12 grid-rows-6 gap-2 h-65v bg-yellow-200 p-2">
