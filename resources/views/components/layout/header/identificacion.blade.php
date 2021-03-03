@@ -4,7 +4,7 @@
             {{auth()->user()->name}}
             <form action="{{route('logout')}}" method="POST">
                 @csrf
-                <button class="text-xl text-enlaces"> {{__(logout)}}</button>
+                <button class="text-xl text-enlaces"> {{__('logout')}}</button>
             </form>
 
         @else

@@ -19,7 +19,34 @@ class EmpresaController extends Controller
      */
     public function index()
     {
-        return view("instituto.empresas.listado");
+
+//Obtenemos todas las empresas
+        $empresas = Empresa::All();
+
+        foreach ($empresas as $empresa){
+            $listado_empresas[]['empresa']=$empresa;
+            $id = $empresa->id;
+            //Obtener todos los ciclos de esa empresa
+            $ciclosEmpresa = EmpresaCiclos::where("empresa",$id)->get();
+//OK
+            $pos_ciclo=0;
+            foreach ($ciclosEmpresa as $ciclo){
+
+                $c =Ciclo::where('id',$ciclo->ciclo)->first();
+
+                $pos = key($listado_empresas);
+
+                $listado_empresas[$pos][$pos_ciclo]['ciclo']['familia']=$c->familia;
+
+
+
+
+                $listado_empresas[$pos][$pos_ciclo]['ciclo']['nombre']=$c->nombre;
+                $pos_ciclo++;
+            }
+        }
+
+        return view("empresa.listado",['listado_empresas'=>$listado_empresas]);
         //
     }
 
