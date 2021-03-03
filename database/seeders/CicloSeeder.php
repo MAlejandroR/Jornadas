@@ -22,7 +22,7 @@ class CicloSeeder extends Seeder
                 "Transporte y logística",
                 "Marketing y Publicidad"],
             "Imagen y Sonio" => [
-                "Video Disk-jokey y sonido",
+                "Video Disk.jokey y sonido",
                 "Animación 3D juegos y Entorno interactivos",
                 "Iluminación Captación y Tratamiento de imagen",
                 "Producción de Audiovisuales y Espectáculos",

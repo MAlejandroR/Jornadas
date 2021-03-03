@@ -125,6 +125,7 @@ class ComposerStaticInit7388f3458b0320c64e2889a18ae116d9
             'League\\MimeTypeDetection\\' => 25,
             'League\\Flysystem\\' => 17,
             'League\\CommonMark\\' => 18,
+            'Laraveles\\Spanish\\' => 18,
             'Laravel\\Ui\\' => 11,
             'Laravel\\Tinker\\' => 15,
             'Laravel\\Sail\\' => 13,
@@ -389,6 +390,10 @@ class ComposerStaticInit7388f3458b0320c64e2889a18ae116d9
         array (
             0 => __DIR__ . '/..' . '/league/commonmark/src',
         ),
+        'Laraveles\\Spanish\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/laraveles/spanish/src',
+        ),
         'Laravel\\Ui\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/ui/src',
@@ -544,6 +549,7 @@ class ComposerStaticInit7388f3458b0320c64e2889a18ae116d9
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\EmpresaCiclosController' => __DIR__ . '/../..' . '/app/Http/Controllers/EmpresaCiclosController.php',
         'App\\Http\\Controllers\\EmpresaController' => __DIR__ . '/../..' . '/app/Http/Controllers/EmpresaController.php',
+        'App\\Http\\Controllers\\FeriaController' => __DIR__ . '/../..' . '/app/Http/Controllers/FeriaController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
@@ -659,7 +665,6 @@ class ComposerStaticInit7388f3458b0320c64e2889a18ae116d9
         'Carbon\\Traits\\Units' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Traits/Units.php',
         'Carbon\\Traits\\Week' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Traits/Week.php',
         'Carbon\\Translator' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Translator.php',
-        'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'Cron\\AbstractField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/AbstractField.php',
         'Cron\\CronExpression' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/CronExpression.php',
         'Cron\\DayOfMonthField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/DayOfMonthField.php',
@@ -1713,6 +1718,7 @@ class ComposerStaticInit7388f3458b0320c64e2889a18ae116d9
         'Illuminate\\Cache\\TaggedCache' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Cache/TaggedCache.php',
         'Illuminate\\Config\\Repository' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Config/Repository.php',
         'Illuminate\\Console\\Application' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Console/Application.php',
+        'Illuminate\\Console\\BufferedConsoleOutput' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Console/BufferedConsoleOutput.php',
         'Illuminate\\Console\\Command' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Console/Command.php',
         'Illuminate\\Console\\Concerns\\CallsCommands' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Console/Concerns/CallsCommands.php',
         'Illuminate\\Console\\Concerns\\HasParameters' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Console/Concerns/HasParameters.php',
@@ -2590,6 +2596,8 @@ class ComposerStaticInit7388f3458b0320c64e2889a18ae116d9
         'Laravel\\Ui\\Presets\\Vue' => __DIR__ . '/..' . '/laravel/ui/src/Presets/Vue.php',
         'Laravel\\Ui\\UiCommand' => __DIR__ . '/..' . '/laravel/ui/src/UiCommand.php',
         'Laravel\\Ui\\UiServiceProvider' => __DIR__ . '/..' . '/laravel/ui/src/UiServiceProvider.php',
+        'Laraveles\\Spanish\\Commands\\InstallLang' => __DIR__ . '/..' . '/laraveles/spanish/src/Commands/InstallLang.php',
+        'Laraveles\\Spanish\\SpanishServiceProvider' => __DIR__ . '/..' . '/laraveles/spanish/src/SpanishServiceProvider.php',
         'League\\CommonMark\\Block\\Element\\AbstractBlock' => __DIR__ . '/..' . '/league/commonmark/src/Block/Element/AbstractBlock.php',
         'League\\CommonMark\\Block\\Element\\AbstractStringContainerBlock' => __DIR__ . '/..' . '/league/commonmark/src/Block/Element/AbstractStringContainerBlock.php',
         'League\\CommonMark\\Block\\Element\\BlockQuote' => __DIR__ . '/..' . '/league/commonmark/src/Block/Element/BlockQuote.php',
@@ -4516,6 +4524,7 @@ class ComposerStaticInit7388f3458b0320c64e2889a18ae116d9
         'Symfony\\Component\\EventDispatcher\\Debug\\TraceableEventDispatcher' => __DIR__ . '/..' . '/symfony/event-dispatcher/Debug/TraceableEventDispatcher.php',
         'Symfony\\Component\\EventDispatcher\\Debug\\WrappedListener' => __DIR__ . '/..' . '/symfony/event-dispatcher/Debug/WrappedListener.php',
         'Symfony\\Component\\EventDispatcher\\DependencyInjection\\AddEventAliasesPass' => __DIR__ . '/..' . '/symfony/event-dispatcher/DependencyInjection/AddEventAliasesPass.php',
+        'Symfony\\Component\\EventDispatcher\\DependencyInjection\\ExtractingEventDispatcher' => __DIR__ . '/..' . '/symfony/event-dispatcher/DependencyInjection/RegisterListenersPass.php',
         'Symfony\\Component\\EventDispatcher\\DependencyInjection\\RegisterListenersPass' => __DIR__ . '/..' . '/symfony/event-dispatcher/DependencyInjection/RegisterListenersPass.php',
         'Symfony\\Component\\EventDispatcher\\EventDispatcher' => __DIR__ . '/..' . '/symfony/event-dispatcher/EventDispatcher.php',
         'Symfony\\Component\\EventDispatcher\\EventDispatcherInterface' => __DIR__ . '/..' . '/symfony/event-dispatcher/EventDispatcherInterface.php',
@@ -4884,6 +4893,7 @@ class ComposerStaticInit7388f3458b0320c64e2889a18ae116d9
         'Symfony\\Component\\Routing\\Loader\\GlobFileLoader' => __DIR__ . '/..' . '/symfony/routing/Loader/GlobFileLoader.php',
         'Symfony\\Component\\Routing\\Loader\\ObjectLoader' => __DIR__ . '/..' . '/symfony/routing/Loader/ObjectLoader.php',
         'Symfony\\Component\\Routing\\Loader\\PhpFileLoader' => __DIR__ . '/..' . '/symfony/routing/Loader/PhpFileLoader.php',
+        'Symfony\\Component\\Routing\\Loader\\ProtectedPhpFileLoader' => __DIR__ . '/..' . '/symfony/routing/Loader/PhpFileLoader.php',
         'Symfony\\Component\\Routing\\Loader\\XmlFileLoader' => __DIR__ . '/..' . '/symfony/routing/Loader/XmlFileLoader.php',
         'Symfony\\Component\\Routing\\Loader\\YamlFileLoader' => __DIR__ . '/..' . '/symfony/routing/Loader/YamlFileLoader.php',
         'Symfony\\Component\\Routing\\Matcher\\CompiledUrlMatcher' => __DIR__ . '/..' . '/symfony/routing/Matcher/CompiledUrlMatcher.php',

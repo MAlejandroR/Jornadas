@@ -1,9 +1,10 @@
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
+            <img src="{{ asset('images/logo_cpifp-300x116.png') }}" />
+{{--            <a href="/">--}}
+{{--                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />--}}
+{{--            </a>--}}
         </x-slot>
 
         <!-- Session Status -->
@@ -46,7 +47,9 @@
                         {{ __('Forgot your password?') }}
                     </a>
                 @endif
-
+                <x-a-href class="ml-3" href="{{route('feria')}}">
+                        {{ __('Cancel') }}
+                    </x-a-herf>
                 <x-button class="ml-3">
                     {{ __('Log in') }}
                 </x-button>
