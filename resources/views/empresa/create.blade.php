@@ -1,14 +1,38 @@
-@extends("instituto.layout")
+@extends("layout")
 
-@section("navegacion")
-    <button type="button"
-            class="focus:outline-none text-white text-sm py-2.5 px-5 rounded-md bg-green-500 hover:bg-green-600 hover:shadow-lg">
-        Guardar
-    </button>
-@endsection
+
+
+
 @section("contenido")
     <form action={{route('empresas.store')}} enctype="multipart/form-data" method='POST' id="form"
           class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+
+            <div class="bg-yellow-600 flex flex-row">
+                <x-form.button>Guardar datos</x-form.button>
+                <a href="{{route("feria")}}" class='inline-flex
+                                                    items-center
+                                    px-4
+                                    py-2
+                                    bg-red-800
+                                    border
+                                    border-transparent
+                                    rounded-md
+                                    font-semibold
+                                    text-xs
+                                    text-white
+                                    uppercase
+                                    tracking-widest
+                                    hover:bg-gray-700
+                                    active:bg-gray-900
+                                    focus:outline-none
+                                    focus:border-gray-900
+                                    focus:ring
+                                    ring-gray-300
+                                    disabled:opacity-25
+                                    transition ease-in-out duration-150 m-2 w-1/4'>Cancelar</a>
+            </div>
+
+
         @csrf
         {{--        <div><img src="img/logo-ghooa.png" width="40%"></div>--}}
         <br>
@@ -78,8 +102,9 @@ El Centro Público Integrado de Formación Profesional Los Enlaces comenzó a fu
 
                 @foreach($ciclos as $index=> $ciclo)
                     <div class="flex flex-row text-2xl">
-                        <input type="checkbox" id="familia" name="familia[]" value="{{$ciclo->familia}}" class="py-1" color={{$index}}>
-                        <span  class="ml-3 text-{{$colores[$index]}}-800" >{{$ciclo->familia}}</span>
+                        <input type="checkbox" id="familia" name="familia[]" value="{{$ciclo->familia}}" class="py-1"
+                               color={{$index}}>
+                        <span class="ml-3 text-{{$colores[$index]}}-800">{{$ciclo->familia}}</span>
                     </div>
                 @endforeach
             </label>
@@ -119,7 +144,7 @@ El Centro Público Integrado de Formación Profesional Los Enlaces comenzó a fu
         $("#form input[type=checkbox]").click(function () {
             var ciclos = [];
             $("input:checkbox:checked").each(function () {
-                ciclos.push($(this).val()+"-"+$(this).attr('color'));
+                ciclos.push($(this).val() + "-" + $(this).attr('color'));
             });
             $.ajax({
                 url: "{{ route('ciclos.get_by_family')}}?familia=" + ciclos,

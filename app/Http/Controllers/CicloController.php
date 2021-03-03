@@ -15,6 +15,14 @@ class CicloController extends Controller
      */
 
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     * Método para la solicitud ajax de las familias
+     * Un poco chapuceado, revisar para mejorarlo
+     * Los colores para que cada ciclo esté con el color de su familia
+     * He añadido un atributo en el elemento llamado color para conseguir este efecto
+     */
     public function get(Request $request)
     {
         $colores = ['red', 'green', 'blue'];
@@ -41,7 +49,7 @@ class CicloController extends Controller
                 $datos = explode("-", $familia);
                 info("quiero ver familia - color", $datos);
                 $familia = $datos[0];
-                $color = $datos[1];
+                $color =isset( $datos[1])? $datos[1]: 0;
                 $ciclos = Ciclo::where("familia", $familia)->get();
                 info("Coonsulta ", [$ciclos->count()]);
                 if ($ciclos->count()>0) {
@@ -54,7 +62,7 @@ class CicloController extends Controller
                         if (in_array($ciclo->nombre, $nombres))
                             $ck = "checked";
                         $html .= "<label for='' class='text-" . $colores[$color] . "-800 flex flex-row' >
-                          <input $ck type='checkbox' class='form-checkbox text-indigo-600' value='$ciclo->nombre' color='$color'/>
+                          <input $ck type='checkbox' class='form-checkbox text-indigo-600' name='ciclo[$familia][]' value='$ciclo->nombre' color='$color'/>
                           <span class='ml-2' >$ciclo->nombre</span>
                           </label><br />";
                     }
@@ -73,7 +81,7 @@ class CicloController extends Controller
     public function index()
     {
         $ciclos = Ciclo::select("familia")->distinct()->get();
-        return view("instituto.empresas.ciclos", compact("ciclos"));
+        return view("empresas.ciclos", compact("ciclos"));
         //
     }
 

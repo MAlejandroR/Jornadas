@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Empresa;
 use App\Models\Ciclo;
+use App\Models\EmpresaCiclos;
 use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
@@ -31,7 +32,7 @@ class EmpresaController extends Controller
 
     {
         $ciclos = DB::select("select distinct  familia from ciclos");
-        return view("instituto.empresas.create", ['ciclos' => $ciclos]);
+        return view("empresa.create", ['ciclos' => $ciclos]);
         //
     }
 
@@ -43,17 +44,40 @@ class EmpresaController extends Controller
      */
     public function store(Request $request)
     {
+//        dd($request);
         $empresa = new Empresa($request->input());
-//        dd($empresa);
-        $empresa_ciclos = new EmpresaCiclos($request->input());
 
-        $name= $request->file('logo')->getClientOriginalName();;
+        $ciclos_empresa = new EmpresaCiclos($request->input());
+
+
+        $name = $request->file('logo')->getClientOriginalName();;
 
         $request->file('logo')->storeAs('logos', $name);
-        $empresa->logo=$name;
-
+        $empresa->logo = $name;
         $empresa->saveOrFail();
-        return view("main");
+        $msj = "La empresa $empresa->empresa se ha guardado en la base de datos";
+
+
+        //Ahora las familias/ciclos que la relaciona
+
+        foreach ($ciclos_empresa->ciclo as $familia => $ciclos)
+            foreach ($ciclos as $ciclo) {
+
+
+                $empresa = Empresa::select('id')->where("empresa", $ciclos_empresa->empresa)->first();
+                info("Id de empresa  ", [$empresa->id]);
+             //   dd($empresa);
+
+                $fila_ciclo = Ciclo::select('id')->where("nombre", $ciclo)->first();
+                info("Nombre de ciclo ", [$ciclo]);
+
+                $datos = ['empresa' => $empresa->id, 'ciclo' => $fila_ciclo->id];
+                $ciclo_familia = new EmpresaCiclos($datos);
+                info("Quiero guardar ", $datos);
+                $ciclo_familia->saveOrFail();
+
+            }
+        return view("feria", compact('msj'));
 
 
         //

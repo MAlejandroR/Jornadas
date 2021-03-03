@@ -7,7 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{$title ?? config('app.name') }}</title>
     <link rel="stylesheet" href="{{asset("/css/app.css")}}">
-    <link rel="icon" href="{{ URL::asset('/css/favicon.ico') }}" type="image/x-icon"/>
+    <link rel="icon" href="{{ URL::asset('/images/favicon.ico') }}" type="image/x-icon"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
 
@@ -15,12 +18,13 @@
 
     <x-layout.header>
     </x-layout.header>
-
-    <x-instituto.nav>
-    </x-instituto.nav>
+    @auth
+        @yield("opciones")
+    @endauth
     @yield("contenido")
     <x-layout.footer>
     </x-layout.footer>
 </div>
+@yield("script")
 </body>
 </html>

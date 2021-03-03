@@ -11992,6 +11992,22 @@ select {
   justify-self: stretch;
 }
 
+.flex-1 {
+  flex: 1 1 0%;
+}
+
+.flex-auto {
+  flex: 1 1 auto;
+}
+
+.flex-initial {
+  flex: 0 1 auto;
+}
+
+.flex-none {
+  flex: none;
+}
+
 .flex-grow-0 {
   flex-grow: 0;
 }
@@ -43756,6 +43772,22 @@ select {
     justify-self: stretch;
   }
 
+  .sm\:flex-1 {
+    flex: 1 1 0%;
+  }
+
+  .sm\:flex-auto {
+    flex: 1 1 auto;
+  }
+
+  .sm\:flex-initial {
+    flex: 0 1 auto;
+  }
+
+  .sm\:flex-none {
+    flex: none;
+  }
+
   .sm\:flex-grow-0 {
     flex-grow: 0;
   }
@@ -75440,6 +75472,22 @@ select {
 
   .md\:justify-self-stretch {
     justify-self: stretch;
+  }
+
+  .md\:flex-1 {
+    flex: 1 1 0%;
+  }
+
+  .md\:flex-auto {
+    flex: 1 1 auto;
+  }
+
+  .md\:flex-initial {
+    flex: 0 1 auto;
+  }
+
+  .md\:flex-none {
+    flex: none;
   }
 
   .md\:flex-grow-0 {
@@ -107128,6 +107176,22 @@ select {
     justify-self: stretch;
   }
 
+  .lg\:flex-1 {
+    flex: 1 1 0%;
+  }
+
+  .lg\:flex-auto {
+    flex: 1 1 auto;
+  }
+
+  .lg\:flex-initial {
+    flex: 0 1 auto;
+  }
+
+  .lg\:flex-none {
+    flex: none;
+  }
+
   .lg\:flex-grow-0 {
     flex-grow: 0;
   }
@@ -138814,6 +138878,22 @@ select {
     justify-self: stretch;
   }
 
+  .xl\:flex-1 {
+    flex: 1 1 0%;
+  }
+
+  .xl\:flex-auto {
+    flex: 1 1 auto;
+  }
+
+  .xl\:flex-initial {
+    flex: 0 1 auto;
+  }
+
+  .xl\:flex-none {
+    flex: none;
+  }
+
   .xl\:flex-grow-0 {
     flex-grow: 0;
   }
@@ -170498,6 +170578,22 @@ select {
 
   .\32xl\:justify-self-stretch {
     justify-self: stretch;
+  }
+
+  .\32xl\:flex-1 {
+    flex: 1 1 0%;
+  }
+
+  .\32xl\:flex-auto {
+    flex: 1 1 auto;
+  }
+
+  .\32xl\:flex-initial {
+    flex: 0 1 auto;
+  }
+
+  .\32xl\:flex-none {
+    flex: none;
   }
 
   .\32xl\:flex-grow-0 {

@@ -23,8 +23,13 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
 
 ## Planteamiento del proyecto
 
- Comenzamos realizando el diseño de pantall
-  
+ Comenzamos realizando el diseño de pantalla
+ 
+ **Sobre datos** (ver .env)
+* dominio ***feria.infenlaces.com***
+* ubicación: *vesta de infenlaces.com*
+
+
  Se usa Tailwind css, y vamos personalizando en el fichero tailgind.config.js los nuevos estilos a incluir
  
  Plateamos el siguiente estilo:
@@ -51,11 +56,23 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
     php artisan db:seed
    </pre>
 3. *(OK)*Ajax para visualizar  ciclos en formulario (check) a partir de una familia
-4.- Guardar datos de empresa
+4. Guardar datos de empresa
+  
     Ahora una empresa puede tener muchos ciclos => cambiar la tabla y añadir una nueva 
+  
    *(OK)*Volver a hacer migraciones 
+  
     Mirar el tema de integridad referencial
+  
     Guardar correctamente los datos
+
 4.1. Quiero instalar un plugin para los formularios de tailwindcss
    https://laravel-news.com/tailwindcss-custom-forms
-5.- hacer un grud de empresas para su gestión    
+
+5.- hacer un grud de empresas para su gestión
+   
+
+##Problemas
+
+Las comas de los nombre del ciclo me dan problemas para trabajar con jquery por cómo paso los datos
+Pendiente hacerlo de otra forma, ahora funciona (ver comentarios en el método get invocado por ajax)

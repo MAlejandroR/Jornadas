@@ -6,7 +6,5 @@
         CPI FP Los Enlaces
     </x-layout.header.titulo>
     <x-layout.header.identificacion>
-
-
     </x-layout.header.identificacion>
 </div>

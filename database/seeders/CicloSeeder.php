@@ -14,6 +14,7 @@ class CicloSeeder extends Seeder
      */
     public function run()
     {
+        //Ojo sin comas que lo uso en el controlador y ajax......
         $familias = [
             "Comercio y Marketing" => ["Actividades Comerciales",
                 "Comercin Internacional",
@@ -22,8 +23,8 @@ class CicloSeeder extends Seeder
                 "Marketing y Publicidad"],
             "Imagen y Sonio" => [
                 "Video Disk-jokey y sonido",
-                "Animación 3D, juegos y Entorno interactivos",
-                "Iluminación, Captación y Tratamiento de imagen",
+                "Animación 3D juegos y Entorno interactivos",
+                "Iluminación Captación y Tratamiento de imagen",
                 "Producción de Audiovisuales y Espectáculos",
                 "Realización de Proyectos Audiovisuales y Espectáculos"],
             "Informática y Comunicaciones"=>[
