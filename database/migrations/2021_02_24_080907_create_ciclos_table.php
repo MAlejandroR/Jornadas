@@ -18,6 +18,7 @@ class CreateCiclosTable extends Migration
             $table->timestamps();
             $table->string("familia");
             $table->string("nombre");
+            $table->string("color");
 
 
 

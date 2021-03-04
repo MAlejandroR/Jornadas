@@ -1,6 +1,7 @@
 <?php
 
 namespace Database\Seeders;
+
 use Illuminate\Support\Facades\DB;
 
 use Illuminate\Database\Seeder;
@@ -27,22 +28,28 @@ class CicloSeeder extends Seeder
                 "Iluminación Captación y Tratamiento de imagen",
                 "Producción de Audiovisuales y Espectáculos",
                 "Realización de Proyectos Audiovisuales y Espectáculos"],
-            "Informática y Comunicaciones"=>[
+            "Informática y Comunicaciones" => [
                 "Sistemas Microinformáticos y en Red",
                 "Administración se Sistemas Informáticos en Red",
                 "Desarrollo de Aplicaciones Multiplataforma",
                 "Desarrollo de Aplicaciones Web"
             ]
         ];
-            
 
-        foreach ($familias as $familia=>$ciclos)
-            foreach ($ciclos as $ciclo) {
-                DB::table('ciclos')->insert([
-                    'familia' => $familia,
-                    'nombre' => $ciclo
-                ]);
-            }
+
+        foreach ($familias as $familia => $ciclos)
+            $color = "";
+        foreach ($ciclos as $ciclo) {
+            $color = $familia == "Comercio y Marketing" ? "red" : $color;
+            $color = $familia == "Imagen y Sonio" ? "green" : $color;
+            $color = $familia == "Informática y Comunicaciones" ? "blue" : $color;
+
+            DB::table('ciclos')->insert([
+                'familia' => $familia,
+                'nombre' => $ciclo,
+                'color' => $color
+            ]);
+        }
         //
     }
 }

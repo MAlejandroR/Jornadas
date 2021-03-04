@@ -22,7 +22,7 @@ class EmpresaController extends Controller
 
 //Obtenemos todas las empresas
         $empresas = Empresa::All();
-
+        $listado_empresas=[];
         foreach ($empresas as $empresa){
             $listado_empresas[]['empresa']=$empresa;
             $id = $empresa->id;
@@ -32,6 +32,7 @@ class EmpresaController extends Controller
             $pos_ciclo=0;
             foreach ($ciclosEmpresa as $ciclo){
 
+                $c =Ciclo::where('id',$ciclo->ciclo)->first();
                 $c =Ciclo::where('id',$ciclo->ciclo)->first();
 
                 $pos = key($listado_empresas);
@@ -79,7 +80,8 @@ class EmpresaController extends Controller
 
         $name = $request->file('logo')->getClientOriginalName();;
 
-        $request->file('logo')->storeAs('logos', $name);
+        $request->file('logo')->storeAs('storage/logos', $name);
+        $request->file('logo')->storeAs('storage/logos', $name);
         $empresa->logo = $name;
         $empresa->saveOrFail();
         $msj = "La empresa $empresa->empresa se ha guardado en la base de datos";
@@ -118,6 +120,7 @@ class EmpresaController extends Controller
      */
     public function show(Empresa $empresa)
     {
+
         //
     }
 
@@ -127,8 +130,29 @@ class EmpresaController extends Controller
      * @param \App\Models\Empresa $empresa
      * @return \Illuminate\Http\Response
      */
-    public function edit(Empresa $empresa)
-    {
+    public function edit(Empresa $empresa){
+        $empresas = Empresa::All();
+        $datos_empresa=[];
+        foreach ($empresas as $empresa){
+            $datos_empresa['empresa']=$empresa;
+            $id = $empresa->id;
+            //Obtener todos los ciclos de esa empresa
+            $ciclosEmpresa = EmpresaCiclos::where("empresa",$id)->get();
+            $pos_ciclo=0;
+            foreach ($ciclosEmpresa as $ciclo){
+                $c =Ciclo::where('id',$ciclo->ciclo)->first();
+                $datos_empresa['ciclo'][$pos_ciclo]['familia']=$c->familia;
+                $datos_empresa['ciclo'][$pos_ciclo]['nombre']=$c->nombre;
+                $pos_ciclo++;
+            }
+        }
+        $ciclos = Ciclo::all();
+
+        return view("empresa.editar", ['datos_empresa'=>$datos_empresa, "ciclos"=>$ciclos]);
+
+
+
+
         //
     }
 
