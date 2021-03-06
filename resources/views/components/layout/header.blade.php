@@ -3,7 +3,7 @@
        {{ asset('images/logo_cpifp-300x116.png') }}
     </x-layout.header.logo>
     <x-layout.header.titulo>
-        CPI FP Los Enlaces
+       Feria Empleo 2021
     </x-layout.header.titulo>
     <x-layout.header.identificacion>
     </x-layout.header.identificacion>
