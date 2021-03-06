@@ -16,5 +16,5 @@
      <x-form.a-href href="{{route('empresas.index')}}">
         Ver Empresas
     </x-form.a-href>
-
+ {{$slot}}
 </form>

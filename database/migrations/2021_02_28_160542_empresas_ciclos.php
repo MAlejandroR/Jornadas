@@ -16,7 +16,7 @@ class EmpresasCiclos extends Migration
         Schema::create('empresa_ciclos', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->foreignId('empresa')->constrained('empresas')->onDelete('restrict');
+            $table->foreignId('empresa')->constrained('empresas')->onDelete('cascade');
             $table->foreignId('ciclo')->constrained('ciclos')->onDelete('restrict');
 
         });

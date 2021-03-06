@@ -22,32 +22,32 @@ class EmpresaController extends Controller
 
 //Obtenemos todas las empresas
         $empresas = Empresa::All();
-        $listado_empresas=[];
-        foreach ($empresas as $empresa){
-            $listado_empresas[]['empresa']=$empresa;
-            $id = $empresa->id;
-            //Obtener todos los ciclos de esa empresa
-            $ciclosEmpresa = EmpresaCiclos::where("empresa",$id)->get();
-//OK
-            $pos_ciclo=0;
-            foreach ($ciclosEmpresa as $ciclo){
+//        $ciclosEmpresa = EmpresaCiclos::All();
+//        $listado_empresas = [];
+//        foreach ($empresas as $empresa) {
+//            $listado_empresas[]['empresa'] = $empresa;
+//            $id = $empresa->id;
+//            //Obtener todos los ciclos de esa empresa
+//            $ciclosEmpresa = EmpresaCiclos::where("empresa", $id)->get();
+////OK
+//            $pos_ciclo = 0;
+//            foreach ($ciclosEmpresa as $ciclo) {
+//
+//                $c = Ciclo::where('id', $ciclo->ciclo)->first();
+//                $c = Ciclo::where('id', $ciclo->ciclo)->first();
+//
+//                $pos = key($listado_empresas);
+//
+//                $listado_empresas[$pos][$pos_ciclo]['ciclo']['familia'] = $c->familia;
+//
+//
+//                $listado_empresas[$pos][$pos_ciclo]['ciclo']['nombre'] = $c->nombre;
+//                $pos_ciclo++;
+//            }
+//        }
+//        return view("empresa.listado", ['listado_empresas' => $listado_empresas]);
+        return view("empresa.listado", ['empresas' => $empresas]);
 
-                $c =Ciclo::where('id',$ciclo->ciclo)->first();
-                $c =Ciclo::where('id',$ciclo->ciclo)->first();
-
-                $pos = key($listado_empresas);
-
-                $listado_empresas[$pos][$pos_ciclo]['ciclo']['familia']=$c->familia;
-
-
-
-
-                $listado_empresas[$pos][$pos_ciclo]['ciclo']['nombre']=$c->nombre;
-                $pos_ciclo++;
-            }
-        }
-
-        return view("empresa.listado",['listado_empresas'=>$listado_empresas]);
         //
     }
 
@@ -59,7 +59,10 @@ class EmpresaController extends Controller
     public function create()
 
     {
-        $ciclos = DB::select("select distinct  familia from ciclos");
+        $ciclos = DB::select("select distinct  familia, color from ciclos");
+//        dd($ciclos);
+
+
         return view("empresa.create", ['ciclos' => $ciclos]);
         //
     }
@@ -80,9 +83,10 @@ class EmpresaController extends Controller
 
         $name = $request->file('logo')->getClientOriginalName();;
 
-        $request->file('logo')->storeAs('storage/logos', $name);
-        $request->file('logo')->storeAs('storage/logos', $name);
+        $a = $request->file('logo')->storeAs('storage/logos', $name);
+
         $empresa->logo = $name;
+        info("he guardado en estorage ", [$a]);
         $empresa->saveOrFail();
         $msj = "La empresa $empresa->empresa se ha guardado en la base de datos";
 
@@ -95,7 +99,7 @@ class EmpresaController extends Controller
 
                 $empresa = Empresa::select('id')->where("empresa", $ciclos_empresa->empresa)->first();
                 info("Id de empresa  ", [$empresa->id]);
-             //   dd($empresa);
+                //   dd($empresa);
 
                 $fila_ciclo = Ciclo::select('id')->where("nombre", $ciclo)->first();
                 info("Nombre de ciclo ", [$ciclo]);
@@ -106,7 +110,8 @@ class EmpresaController extends Controller
                 $ciclo_familia->saveOrFail();
 
             }
-        return view("feria", compact('msj'));
+        info("Valor del mensaje ", [$msj]);
+        return view("feria", ['msj' => $msj]);
 
 
         //
@@ -130,30 +135,37 @@ class EmpresaController extends Controller
      * @param \App\Models\Empresa $empresa
      * @return \Illuminate\Http\Response
      */
-    public function edit(Empresa $empresa){
-        $empresas = Empresa::All();
-        $datos_empresa=[];
-        foreach ($empresas as $empresa){
-            $datos_empresa['empresa']=$empresa;
-            $id = $empresa->id;
-            //Obtener todos los ciclos de esa empresa
-            $ciclosEmpresa = EmpresaCiclos::where("empresa",$id)->get();
-            $pos_ciclo=0;
-            foreach ($ciclosEmpresa as $ciclo){
-                $c =Ciclo::where('id',$ciclo->ciclo)->first();
-                $datos_empresa['ciclo'][$pos_ciclo]['familia']=$c->familia;
-                $datos_empresa['ciclo'][$pos_ciclo]['nombre']=$c->nombre;
-                $pos_ciclo++;
-            }
+    public function edit(Empresa $empresa)
+    {
+
+
+        $familias = DB::select("select distinct familia,color from ciclos");
+
+        $familiasSelect = DB::select("select distinct familia,color from ciclos
+                                            where id IN
+                                                    (select ciclo
+                                                     from empresa_ciclos
+                                                    where empresa =$empresa->id )");
+
+        foreach ($familiasSelect as $familia) {
+
+            $ciclos[$familia->familia] = DB::select("select nombre,color from ciclos where familia ='$familia->familia'");
         }
-        $ciclos = Ciclo::all();
+        foreach ($familiasSelect as $familia) {
+            $ciclosSelect = DB::select("select nombre from ciclos where id in
+                                                    (select ciclo
+                                                     from empresa_ciclos
+                                                    where empresa =$empresa->id )");
+        }
 
-        return view("empresa.editar", ['datos_empresa'=>$datos_empresa, "ciclos"=>$ciclos]);
+//dd($ciclosSelect);
+        return view("empresa.editar", ['empresa' => $empresa,
+            'familias' => $familias,
+            'familiasSelect' => $familiasSelect,
+            'ciclos' => $ciclos,
+            'ciclosSelect' => $ciclosSelect]);
 
 
-
-
-        //
     }
 
     /**
@@ -165,6 +177,8 @@ class EmpresaController extends Controller
      */
     public function update(Request $request, Empresa $empresa)
     {
+        $empresa->fill($request->input())->saveOrFail();
+        return redirect()->route('empresas.index');
         //
     }
 
@@ -176,6 +190,8 @@ class EmpresaController extends Controller
      */
     public function destroy(Empresa $empresa)
     {
+        $empresa->delete();
+        return redirect()->route('empresas.index');
         //
     }
 }

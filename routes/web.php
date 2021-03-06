@@ -34,7 +34,8 @@ Route::resource("empresas",App\Http\Controllers\EmpresaController::class)->middl
 
 
 //Solicitud ajax
-Route::get("obtener_ciclos",("App\Http\Controllers\CicloController@get"))->name("ciclos.get_by_family");
+//Route::get("obtener_ciclos",("App\Http\Controllers\CicloController@get"))->name("ciclos.get_by_family");
+Route::post("obtener_ciclos",("App\Http\Controllers\CicloController@get"))->name("ciclos.get_by_family");
 
 
 //Route::get("login1", function(){

@@ -76,3 +76,9 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
 
 Las comas de los nombre del ciclo me dan problemas para trabajar con jquery por cómo paso los datos
 Pendiente hacerlo de otra forma, ahora funciona (ver comentarios en el método get invocado por ajax)
+
+4/3 18:00 Está corregida la vista de crear empresa
+Falta
+   De alguna forma que crear y editar se nutran de la misma plantilla
+A1.-    Pantalla de editar para visualziar/cambiar los datos de una empresa
+

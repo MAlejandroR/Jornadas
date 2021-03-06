@@ -3,7 +3,7 @@
 @section('opciones')
     <x-layout.nav>
         @isset($msj)
-            <div class="text-2xl text-blue-800">{{$msj}}
+            <div class="text-2xl text-blue-800">{{$msj}}</div>
         @endisset
     </x-layout.nav>
 @endsection

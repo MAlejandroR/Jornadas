@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Ciclo extends Model
 {
     use HasFactory;
+    protected $fillable=['familia', 'nombre', 'color'];
 }

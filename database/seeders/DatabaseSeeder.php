@@ -14,9 +14,8 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
-        $this->call(CicloSeeder::class);
-        //MRM falla la inserción de usuario
-//        $this->call(UserSeeder::class);
+       $this->call(CicloSeeder::class);
+       $this->call(UserSeeder::class);
 
 
     }

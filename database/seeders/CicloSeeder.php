@@ -18,14 +18,14 @@ class CicloSeeder extends Seeder
         //Ojo sin comas que lo uso en el controlador y ajax......
         $familias = [
             "Comercio y Marketing" => ["Actividades Comerciales",
-                "Comercin Internacional",
+                "Comercio Internacional",
                 "Gestión de ventas  y espacios comerciales",
                 "Transporte y logística",
                 "Marketing y Publicidad"],
             "Imagen y Sonio" => [
-                "Video Disk.jokey y sonido",
+                "Video Disk-jokey y sonido",
                 "Animación 3D juegos y Entorno interactivos",
-                "Iluminación Captación y Tratamiento de imagen",
+                "Iluminación, Captación y Tratamiento de imagen",
                 "Producción de Audiovisuales y Espectáculos",
                 "Realización de Proyectos Audiovisuales y Espectáculos"],
             "Informática y Comunicaciones" => [
@@ -36,19 +36,18 @@ class CicloSeeder extends Seeder
             ]
         ];
 
-
-        foreach ($familias as $familia => $ciclos)
-            $color = "";
-        foreach ($ciclos as $ciclo) {
+        $color = "";
+        foreach ($familias as $familia => $ciclos) {
             $color = $familia == "Comercio y Marketing" ? "red" : $color;
             $color = $familia == "Imagen y Sonio" ? "green" : $color;
             $color = $familia == "Informática y Comunicaciones" ? "blue" : $color;
-
-            DB::table('ciclos')->insert([
-                'familia' => $familia,
-                'nombre' => $ciclo,
-                'color' => $color
-            ]);
+            foreach ($ciclos as $ciclo) {
+                DB::table('ciclos')->insert([
+                    'familia' => $familia,
+                    'nombre' => $ciclo,
+                    'color' => $color
+                ]);
+            }
         }
         //
     }

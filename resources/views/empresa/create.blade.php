@@ -9,27 +9,8 @@
 
             <div class="bg-yellow-600 flex flex-row">
                 <x-form.button>Guardar datos</x-form.button>
-                <a href="{{route("feria")}}" class='inline-flex
-                                                    items-center
-                                    px-4
-                                    py-2
-                                    bg-red-800
-                                    border
-                                    border-transparent
-                                    rounded-md
-                                    font-semibold
-                                    text-xs
-                                    text-white
-                                    uppercase
-                                    tracking-widest
-                                    hover:bg-gray-700
-                                    active:bg-gray-900
-                                    focus:outline-none
-                                    focus:border-gray-900
-                                    focus:ring
-                                    ring-gray-300
-                                    disabled:opacity-25
-                                    transition ease-in-out duration-150 m-2 w-1/4'>Cancelar</a>
+                <x-form.a-href href="{{route('feria')}}">Cancelar</x-form.a-href>
+
             </div>
 
 
@@ -69,7 +50,7 @@ El Centro Público Integrado de Formación Profesional Los Enlaces comenzó a fu
                 Ponente
             </label>
             <input
-                    value="Alumudena Idalgo"
+                    value="Alumudena Hidalgo"
                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     name="ponente" id="ponente" type="text" placeholder="Ponente" required>
         </div>
@@ -92,29 +73,22 @@ El Centro Público Integrado de Formación Profesional Los Enlaces comenzó a fu
                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     name="duracion" id="date" type="number" placeholder="Duración en minutos" required>
         </div>
-        <div class="flex flex-col justify-center border-purple-900  w-1/4 p-6
+        <div class="flex flex-col justify-center border-purple-900  w-full p-6
                     border-pink-700 rounded-3xl">
-            <label class="border-pink-900 rounded-4 text-3xl" for="familia">Familias profesionales
-                @php
-                    $colores=['red', 'green','blue'];
-                    $n=0;
-                @endphp
-
+            <label class="border border-pink-900 rounded-2xl p-4 text-xl" for="familia">Familias profesionales
                 @foreach($ciclos as $index=> $ciclo)
-                    <div class="flex flex-row text-2xl">
-                        <input type="checkbox" id="familia" name="familia[]" value="{{$ciclo->familia}}" class="py-1"
+                    <div class=" flex flex-row text-1xl mt-10 pl-10">
+                        <input type="checkbox" id="familia" name="familia[]" value="{{$ciclo->familia}}"
+                               class="py-1  text-{{$ciclo->color}}-800 "
                                color={{$index}}>
-                        <span class="ml-3 text-{{$colores[$index]}}-800">{{$ciclo->familia}}</span>
+                        <span class="ml-3 text-{{$ciclo->color}}-800">{{$ciclo->familia}}</span>
                     </div>
                 @endforeach
             </label>
         </div>
+        <label class="p-4 text-xl" for="familia">Ciclo/s a los que va dirigido </label>
 
-        <label class="block text-gray-700 text-sm font-bold mb-2" for="ciclo">
-            Ciclo al que va dirigido
-        </label>
-
-        <div id='ciclo'>
+        <div id='ciclo' class="border border-pink-900 rounded-2xl">
             {{--            Falta implementar esta parte--}}
             <h2>Para mostrar ciclos, selecciona una familia</h2>
         </div>
@@ -136,19 +110,28 @@ El Centro Público Integrado de Formación Profesional Los Enlaces comenzó a fu
         </div>
         <x-form.button> Guardar datos</x-form.button>
     </form>
-
-
 @endsection
+
+
+
+
 @section('script')
     <script type="text/javascript">
-        $("#form input[type=checkbox]").click(function () {
-            var ciclos = [];
+        // Llamada ajax para recuperar los ciclos de una familia que acabo de clicar
+        // O bien para anunlar dichos ciclos si lo he deselecccionado
+        // Retornará el html con el select-option con un listado de los ciclo de cada familia
+        // Pendiente pasar a vue
+        $("#form input[type=checkbox]").click( function () {
+            var ciclos =[] ;
+            // console.log("estoy por aquí ");
             $("input:checkbox:checked").each(function () {
-                ciclos.push($(this).val() + "-" + $(this).attr('color'));
+                ciclos.push($(this).val());
+                // console.log("Cargando un elemento en el array "+$(this).val());
             });
             $.ajax({
-                url: "{{ route('ciclos.get_by_family')}}?familia=" + ciclos,
-                method: 'GET',
+                url: "{{ route('ciclos.get_by_family')}}",
+                method: 'POST',
+                data :{'_token': "{{csrf_token()}}",'familias':ciclos},
                 success: function (data) {
                     $('#ciclo').html(data.html);
                 }
