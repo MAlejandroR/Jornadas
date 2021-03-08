@@ -24,6 +24,11 @@ colors{
 
 * Diseño de header
 
+### Colores usados
+1. *Informática* 3EFAAC un azul
+2. *Comerio* 9D1C1C marrón
+3. *Imagen* 005747 Verde
+
 
 ### subtítulos al vídeo
 https://albertosantos.net/como-poner-subtitulos-a-un-video-en-una-web

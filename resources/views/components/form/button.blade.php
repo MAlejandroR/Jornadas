@@ -19,6 +19,6 @@
                                     focus:ring
                                     ring-gray-300
                                     disabled:opacity-25
-                                    transition ease-in-out duration-150 m-2 w-1/4']) }}>
+                                    transition ease-in-out duration-150 m-2 w-1/3']) }}>
     {{ $slot }}
 </button>

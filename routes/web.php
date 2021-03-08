@@ -39,7 +39,7 @@ Route::post("obtener_ciclos",("App\Http\Controllers\CicloController@get"))->name
 
 
 
-Route::post("ponencias", ("App\Http\Controllers\EmpresaCiclos@ponencias"))->name("empresas.ponencias");
+Route::post("ponencias", ("App\Http\Controllers\EmpresaController@ponencias"))->name("empresas.ponencias");
 
 //Route::get("login1", function(){
 //    return view ("login1");

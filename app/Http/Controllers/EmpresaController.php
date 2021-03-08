@@ -194,4 +194,9 @@ class EmpresaController extends Controller
         return redirect()->route('empresas.index');
         //
     }
+
+    public function ponencias (Request $datos){
+        echo "<h1>Vengo de $datos->empresa</h1>";
+
+    }
 }
