@@ -3,7 +3,7 @@
            width=420 height=320 playsinline autoplay muted loop title="VÍDEO JEJE "
            poster="{{asset('public/images/logo_calidad.png')}}" id=video onclick="click_video"
     >
-        <source src="{{asset('storage/videos/presentacion.mp4')}}"  type="video/mp4" />
+        <source src="{{asset('storage/videos/presentacion.mkv')}}"  type="video/mp4" />
 
 
         <track src="{{asset('storage/videos/presentacion.vtt')}}" kind="subtitles" srclang="es" label="Español" default>
