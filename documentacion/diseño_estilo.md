@@ -33,3 +33,5 @@ colors{
 ### subtítulos al vídeo
 https://albertosantos.net/como-poner-subtitulos-a-un-video-en-una-web
 https://stackoverflow.com/questions/18326973/clicking-html-5-video-element-to-play-pause-video-breaks-play-button
+(Para el control del vídeo)
+https://www.eniun.com/control-reproduccion-video-audio-javascript/

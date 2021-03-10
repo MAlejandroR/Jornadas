@@ -11,6 +11,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js" defer></script>
+
 </head>
 <body>
 
@@ -25,6 +27,31 @@
     <x-layout.footer>
     </x-layout.footer>
 </div>
-@yield("script")
+@section("script")
+<script>
+    function app(){
+        return {
+            newEntry: {
+                'from': '',
+                'to': '',
+                'subject': '',
+            },
+            data: [],
+            init() {
+                if(!this.data.length > 0){
+                    let now = new Date()
+                    this.newEntry.from = this.formatTime(now,15)
+                    now.setHours(now.getHours() + 1)
+                    this.newEntry.to = this.formatTime(now,15)
+                }else{
+                    let entries = this.data[0].entries
+                    this.newEntry.from = entries[entries.length-1].to
+                    this.newEntry.to = this.formatTime(now, 15)
+                }
+            }
+    }
+    }
+</script>
+    @show
 </body>
 </html>
