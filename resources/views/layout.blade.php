@@ -27,6 +27,7 @@
     <x-layout.footer>
     </x-layout.footer>
 </div>
+
 @section("script")
 <script>
     function app(){

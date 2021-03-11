@@ -99,12 +99,14 @@
 @endsection
 
 @section('contenido')
-    <x-layout.main>
+
+
 
         @empty($empresas)
             <h1 class="text-yellow-800 text-3xl">Actualmente no hay empresas insertadas</h1>
         @endempty
         @isset($empresas)
+
                 <table class="max-w-full divide-y divide-gray-200 m-5">
                 <table class="max-w-full divide-y divide-gray-200 m-5">
                     <thead class="bg-gray-50">
@@ -121,8 +123,8 @@
                             {{--                            {{dd ($listado_empresas)}}--}}
                             <x-form.td>
                                 <div class="flex items-center">
-                                    <div class="flex-shrink-0 h-10 w-10">
-                                        <img class="h-10 w-10 rounded-full"
+                                    <div class="flex-shrink-0 h-5 w-5">
+                                        <img class="h-5 w-5 rounded-full"
                                              src="{{asset("storage/logos/{$empresa->logo}")}}">
                                     </div>
                                     <div class="ml-4">
@@ -153,6 +155,7 @@
 
 
 
+
             {{--           --}}
             {{--                <h1 class="text-yellow-800 text-3xl"> DAtos de nueva empresa</h1>--}}
             {{--                <hr/>--}}
@@ -177,8 +180,12 @@
             {{--                @endforeach--}}
             {{--            @endforeach--}}
         @endisset
-    </x-layout.main>
+
+
+
 @endsection
+
+
 
 
 

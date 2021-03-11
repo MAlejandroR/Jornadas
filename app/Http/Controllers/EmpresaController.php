@@ -20,8 +20,10 @@ class EmpresaController extends Controller
     public function index()
     {
 
+
 //Obtenemos todas las empresas
         $empresas = Empresa::All();
+
 //        $ciclosEmpresa = EmpresaCiclos::All();
 //        $listado_empresas = [];
 //        foreach ($empresas as $empresa) {
@@ -46,6 +48,7 @@ class EmpresaController extends Controller
 //            }
 //        }
 //        return view("empresa.listado", ['listado_empresas' => $listado_empresas]);
+
         return view("empresa.listado", ['empresas' => $empresas]);
 
         //
