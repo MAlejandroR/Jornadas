@@ -1,33 +1,35 @@
-<div class="flex flex-row h-65v  w-100vh bg-yellow-200 overflow-y-auto justify-around items-center">
-    <div class="flex flex-col h-60v justify-around ">
+<div class="flex flex-row  w-100vh justify-around items-center bg-fondo h-65v">
+    <div class="flex flex-col justify-between p-8 w-1/3  items-center h-65v">
         <x-layout.main.si>
-            <div class="w-30v h-10v ml-16 mr-16">
-                <h1>Ciclo de informática</h1>
-            </div>
+            informatica
         </x-layout.main.si>
 
         <x-layout.main.ii>
-            <div class="w-30v h-10v ml-16 mr-16">
-                <h1>Ciclo de Comerico</h1>
-            </div>
+            imagen
         </x-layout.main.ii>
     </div>
-    <div class="flex flex-column">
+    {{--    <div class="flex flex-col justify-center w-1/3 bg-blue-500 flex-shrink self-center h-65v">--}}
+    <div class="flex flex-col justify-center p-8 w-1/3  items-center h-65v">
+
         <x-layout.main.video>
-
         </x-layout.main.video>
-    </div>
-    <div class="flex flex-col h-60v justify-around border border-green-500 rounded-3xl">
 
-        <x-layout.main.sd>
-            <div class="w-30v h-10v ml-16 mr-16">
-                <h1>Ciclo de imagen</h1>
-            </div>
+
+        <h2>Clcik y para/activar el vídeo</h2>
+        <x-form.button id="botonVideo">
+            Ver texto
+        </x-form.button>
+
+
+    </div>
+    <div class="flex flex-col justify-between p-8 w-1/3  items-center h-65v">
+
+        <x-layout.main.sd class="h-2/8">
+            comercio
         </x-layout.main.sd>
-        <x-layout.main.id>
-            <div class="w-30v h-10v ml-16 mr-16">
-                <h1>Nuestro Centro</h1>
-            </div>
+
+        <x-layout.main.id class="h-2/8">
+            jornadas
         </x-layout.main.id>
     </div>
 

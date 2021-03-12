@@ -22,6 +22,8 @@ colors{
  
 ![Layout principal](./imagenes/layout.png "Estilo del layout")
 
+* Aquí el tamaña general en función de viewport ?????
+
 * Diseño de header
 
 ### Colores usados
@@ -35,3 +37,12 @@ https://albertosantos.net/como-poner-subtitulos-a-un-video-en-una-web
 https://stackoverflow.com/questions/18326973/clicking-html-5-video-element-to-play-pause-video-breaks-play-button
 (Para el control del vídeo)
 https://www.eniun.com/control-reproduccion-video-audio-javascript/
+https://logosea.com/crea-tu-logotipo/
+
+####diseñar logos (fácil y rápido)
+https://logosea.com/crea-tu-logotipo/
+
+####Diseño responsivo 
+´´´´css
+hidden md:block
+´´´

@@ -1,4 +1,4 @@
-<h1 class="text-5xl italic text-enlaces
-          max-h-full self-center flex-nowrap overflow-hidden" >
+<h1 {{$attributes->merge(['class'=>"text-7xl font-mono text-enlaces text-center
+max-h-full  overflow-hidden place-self-right"])}} >
     {{ $slot}}
 </h1>

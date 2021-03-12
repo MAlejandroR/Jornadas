@@ -142,18 +142,24 @@ class EmpresaController extends Controller
     {
 
 
+        //Obtenemos todas las familias
         $familias = DB::select("select distinct familia,color from ciclos");
 
+        //obtenemos las familias donde esa empresa tiene relación
         $familiasSelect = DB::select("select distinct familia,color from ciclos
                                             where id IN
                                                     (select ciclo
                                                      from empresa_ciclos
                                                     where empresa =$empresa->id )");
 
+        $ciclos =[]; //Inicializamos por si no hay ningún ciclo relacionado
         foreach ($familiasSelect as $familia) {
 
             $ciclos[$familia->familia] = DB::select("select nombre,color from ciclos where familia ='$familia->familia'");
         }
+
+        //Obtenemos los nombres de los ciclos de cada familia con los que la empresa tiene relacion
+        $ciclosSelect=[]; //Inicializamos por si no hubiera ninguna relación
         foreach ($familiasSelect as $familia) {
             $ciclosSelect = DB::select("select nombre from ciclos where id in
                                                     (select ciclo
@@ -179,7 +185,19 @@ class EmpresaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Empresa $empresa)
+
     {
+
+//Miramos a ver si hay  nuevo logo
+
+            if ($request->file('logo')!=null) {
+                $name = $request->file('logo')->getClientOriginalName();;
+                $directorioDeLogos = asset("storage/logos");
+                $a = $request->file('logo')->storeAs('logos', $name);
+                info("He guardado el fichero ",[$a]);
+                $empresa->logo = $name;
+            }
+
         $empresa->fill($request->input())->saveOrFail();
         return redirect()->route('empresas.index');
         //

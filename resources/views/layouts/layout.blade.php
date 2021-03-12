@@ -30,7 +30,8 @@
 
 
     </x-instituto.nav>
-@yield("contenido")
+
+    @yield("contenido")
 
     <x-layout.footer>
 

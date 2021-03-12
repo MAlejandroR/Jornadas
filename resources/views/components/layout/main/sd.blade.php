@@ -1,10 +1,11 @@
 <div>
     <form action={{route("empresas.ponencias")}} method='POST'>
         @csrf
-        <input type="hidden" name="empresa" value="imagen">
+        <input type="hidden" name="empresa" value="comercio">
 
-        <x-form.button id="sd">
-            <img id="images" class="m-6 rounded-3xl" src="{{asset("images/imagen.png")}}" alt="Imagen y Producción">
+        <x-form.button id="sd" class="w-20v">
+            <img id="comercio" class="rounded-3xl"
+                 src="{{asset("images/familias/comercio.png")}}" alt="Comercio y Marketing">
         </x-form.button>
     </form>
 </div>

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -15,44 +15,27 @@
 
 </head>
 <body>
+<div class="flex flex-col flex-1 justify-between h-screen mx-10 bg-fondo">
 
-<div class="bg-smoke-light flex flex-col flex-1 justify-center h-screen mx-10 p-2.5 bg-yellow-50">
-
-    <x-layout.header>
+    <x-layout.header class="h-15v">
     </x-layout.header>
+    <div class="h-10v">
     @auth
         @yield("opciones")
     @endauth
+    </div>
+    <div class="h-65v">
     @yield("contenido")
-    <x-layout.footer>
+    </div>
+
+    <x-layout.footer class="h-10v">
+
     </x-layout.footer>
 </div>
 
 @section("script")
-<script>
-    function app(){
-        return {
-            newEntry: {
-                'from': '',
-                'to': '',
-                'subject': '',
-            },
-            data: [],
-            init() {
-                if(!this.data.length > 0){
-                    let now = new Date()
-                    this.newEntry.from = this.formatTime(now,15)
-                    now.setHours(now.getHours() + 1)
-                    this.newEntry.to = this.formatTime(now,15)
-                }else{
-                    let entries = this.data[0].entries
-                    this.newEntry.from = entries[entries.length-1].to
-                    this.newEntry.to = this.formatTime(now, 15)
-                }
-            }
-    }
-    }
-</script>
-    @show
+    <script>
+    </script>
+@show
 </body>
 </html>
