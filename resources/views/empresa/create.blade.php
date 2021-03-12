@@ -5,7 +5,7 @@
 
 @section("contenido")
     <form action={{route('empresas.store')}} enctype="multipart/form-data" method='POST' id="form"
-          class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+          class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 overflow-y-auto h-65v">
 
             <div class="bg-yellow-600 flex flex-row">
                 <x-form.button>Guardar datos</x-form.button>
