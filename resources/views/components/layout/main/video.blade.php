@@ -1,9 +1,9 @@
     <video class="" autoplay controls width=80% height=100% playsinline muted loop title="VÍDEO JEJE "
-           poster="{{asset('public/images/logo_calidad.png')}}" id=video>
-        <source src="{{asset('storage/videos/presentacion.mkv')}}" type="video/mp4"/>
+           poster="{{asset('images/logo_calidad.png')}}" id=video>
+        <source src="{{asset('videos/presentacion.mkv')}}" type="video/mp4"/>
 
 
-        <track id="subtitulo" src="{{asset('storage/videos/presentacion.vtt')}}" kind="subtitles" srclang="es"
+        <track id="subtitulo" src="{{asset('videos/presentacion.vtt')}}" kind="subtitles" srclang="es"
                label="Español" default>
         Lo sentimos. Este vídeo no puede ser reproducido en tu navegador.<br>
         La versión descargable está disponible en <a href="URL">Enlace</a>.

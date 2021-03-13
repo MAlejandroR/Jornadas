@@ -24,7 +24,7 @@
         @yield("opciones")
     @endauth
     </div>
-    <div class="h-65v">
+    <div class="h-65v overflow-y-auto">
     @yield("contenido")
     </div>
 

@@ -12,7 +12,7 @@
     @endempty
     @isset($empresas)
 
-        <table class="w-1/2 divide-y divide-gray-200 m-5 overflow-y-auto">
+        <table class="w-1/2 divide-y divide-gray-200 m-5 overflow-y-auto h-65v">
             {{--                <table class="max-w-full divide-y divide-gray-200 m-5">--}}
             <thead class="bg-gray-50">
             <tr>
@@ -22,7 +22,7 @@
                 <x-form.th>Eliminar</x-form.th>
             </tr>
             </thead>
-            <tbody class="bg-white divide-y divide-gray-200 h-70v overflow-y-auto">
+            <tbody class="bg-white divide-y divide-gray-200 ">
             @foreach($empresas as $empresa)
                 <tr>
                     {{--                            {{dd ($listado_empresas)}}--}}

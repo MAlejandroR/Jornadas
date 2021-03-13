@@ -86,7 +86,7 @@ class EmpresaController extends Controller
 
         $name = $request->file('logo')->getClientOriginalName();;
 
-        $a = $request->file('logo')->storeAs('storage/logos', $name);
+        $a = $request->file('logo')->storeAs('logos', $name);
 
         $empresa->logo = $name;
         info("he guardado en estorage ", [$a]);
